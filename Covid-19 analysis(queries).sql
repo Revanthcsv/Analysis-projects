@@ -169,7 +169,7 @@ WHERE RowNum = 1;
 --Queries used for Tableau Dashboards(The outputs of each of the queries is made into a excel sheet to make working on tableau easier)
 
 
--- 1. Data
+-- 1. Data query
 
 Select SUM(new_cases) as total_cases, SUM(cast(new_deaths as int)) as total_deaths, SUM(cast(new_deaths as int))/SUM(New_Cases)*100 as DeathPercentage
 From CovidDeaths
@@ -178,7 +178,7 @@ where continent is not null
 --Group By date
 order by 1,2
 
--- 2. pie chart
+-- 2. pie chart query
 
 -- European Union is part of Europe
 
@@ -191,7 +191,7 @@ Group by location
 order by TotalDeathCount desc
 
 
--- 3. map
+-- 3. map query
 
 Select Location, Population, MAX(total_cases) as HighestInfectionCount,  Max((total_cases/population))*100 as PercentPopulationInfected
 From CovidDeaths
@@ -200,7 +200,7 @@ Group by Location, Population
 order by PercentPopulationInfected desc
 
 
--- 4.line graph
+-- 4.line graph query
 
 
 Select Location, Population,date, MAX(total_cases) as HighestInfectionCount,  Max((total_cases/population))*100 as PercentPopulationInfected
@@ -209,7 +209,7 @@ From CovidDeaths
 Group by Location, Population,date
 order by PercentPopulationInfected desc
 
---5.
+--5.Covid vacciantions tracker query
 
 
 select x.continent,x.location,y.Date,population,y.people_vaccinated,people_fully_vaccinated,y.gdp_per_capita,people_fully_vaccinated_per_hundred,people_vaccinated_per_hundred
